@@ -1,0 +1,16 @@
+{
+  "name": "sqlitemongo",
+  "version": "1.0.0",
+  "description": "Migrate your sqlite3 database to mongodb",
+  "main": "sqlitemongo.js",
+  "scripts": {
+	  "test": "node test.js"
+  },
+  "keywords": ["sqlite3", "mongo", "database", "migrate"],
+  "author": "Isaak Eriksson <isaak.eriksson@protonmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^3.5.7",
+    "sqlite3": "^4.2.0"
+  }
+}
