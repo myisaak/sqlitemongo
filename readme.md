@@ -11,7 +11,13 @@ Migrate your sqlite3 database to mongodb.
 
 It copies all tables from sqlite3 into mongo collections under a specified database. For example, if you have a sqlite3 database file `db.sqlite3` with tables: `table1` and `table2`, this tool uploads to a mongo database with collections `table1` and `table2`.
 
-## Usage
+## CLI Usage
+
+1. Install sqlitemongo globally using `sudo npm install --global sqlitemongo`.
+2. Run `sqlitemongo <sqlitepath> <mongo uri> [<mongo database>]`
+3. Done
+
+## Module Usage
 
 Just import sqlitemongo from npm `npm i sqlitemongo`, and start using as below:
 

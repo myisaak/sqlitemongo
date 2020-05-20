@@ -1,4 +1,5 @@
-const sqlitemongo = require('./sqlitemongo');
+#!/usr/bin/env node
+const sqlitemongo = require('../sqlitemongo');
 const path = require('path');
 
 async function test() {
@@ -8,7 +9,7 @@ async function test() {
 		var mongoDb = process.argv.length > 4 && process.argv[4];
 		return sqlitemongo(sqlitePath, mongoURI, mongoDb);
 	} else {
-		console.log(`Usage: node test.js <sqlitepath> <mongo uri> [<mongo database>]`);
+		console.log(`Usage: sqlitemongo <sqlitepath> <mongo uri> [<mongo database>]`);
 	}
 }
 test().catch(console.error);
