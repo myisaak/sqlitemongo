@@ -1,6 +1,6 @@
 {
   "name": "sqlitemongo",
-  "version": "1.1.7",
+  "version": "1.1.9",
   "description": "Migrate your sqlite3 database to mongodb",
   "main": "sqlitemongo.js",
   "bin": "bin/sqlitemongo.js",
