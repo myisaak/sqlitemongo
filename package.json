@@ -22,7 +22,7 @@
     "email": "isaak.eriksson@protonmail.com"
   },
   "dependencies": {
-    "mongodb": "^3.6.3",
-    "sqlite3": "^5.0.0"
+    "mongodb": "^4.0.1",
+    "sqlite3": "^5.0.2"
   }
 }
