@@ -1,7 +1,10 @@
 # sqlitemongo
 
-![David](https://img.shields.io/david/myisaak/sqlitemongo)
+[![Node.js CI](https://github.com/MyIsaak/sqlitemongo/actions/workflows/node.js.yml/badge.svg)](https://github.com/MyIsaak/sqlitemongo/actions/workflows/node.js.yml)
+![Version](https://img.shields.io/npm/v/sqlitemongo/latest)
 ![Snyk Vulnerabilities for npm package](https://img.shields.io/snyk/vulnerabilities/npm/sqlitemongo)
+![Maintenance](https://img.shields.io/maintenance/yes/2021)
+![License](https://img.shields.io/npm/l/sqlitemongo)
 ![npm](https://img.shields.io/npm/dw/sqlitemongo)
 
 Migrate your sqlite3 database to mongodb.
