@@ -3,7 +3,7 @@ module.exports = sqliteMongo;
 const { MongoClient } = require('mongodb');
 const sqlite3 = require('sqlite3');
 
-async function sqliteMongo(sqlitepath, mongoURI, mongoDbName = 'crawl-social') {
+async function sqliteMongo(sqlitepath, mongoURI, mongoDbName = 'sqlite3') {
 	if (typeof sqlitepath !== `string`) {
 		return console.error(`Èxpected a valid sqlite3 filepath but instead got ${sqlitepath}`);
 	}

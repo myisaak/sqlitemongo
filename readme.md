@@ -16,7 +16,7 @@ Migrate your sqlite3 database to mongodb.
 
 ## What
 
-It copies all tables from sqlite3 into mongo collections under a specified database. For example, if you have a sqlite3 database file `db.sqlite3` with tables: `table1` and `table2`, this tool uploads to a mongo database with collections `table1` and `table2`.
+It copies all tables from sqlite3 into mongo collections under a specified database. For example, if you have a sqlite3 database file `db.sqlite3` with tables: `table1` and `table2`, this tool uploads to a mongo database titled by default `sqlite3` with collections `table1` and `table2`.
 
 ## CLI Usage
 
