@@ -13,7 +13,7 @@ async function sqliteMongo(sqlitepath, mongoURI, mongoDbName = 'sqlite3') {
 
 	var sqliteDb = new sqlite3.Database(sqlitepath);
 	var mongoConnected = await MongoClient.connect(mongoURI);
-	var mongoDb = await mongoConnected.db(mongoDbName);
+	var mongoDb = mongoConnected.db(mongoDbName);
 
 	async function uploadAllTablesToMongo() {
 		var tables = await getSqliteTables();
@@ -31,6 +31,12 @@ async function sqliteMongo(sqlitepath, mongoURI, mongoDbName = 'sqlite3') {
 
 	async function uploadToMongo(tableName, rows) {
 		return new Promise(function resolveLogError(resolve, reject) {
+			if (rows.length === 0) {
+				// TODO: Add document validation for Mongodb 3.6 and later
+				mongoDb.createCollection(tableName, false, resolve);
+				return;
+			}
+			// TODO: Add --overwrite option (fixes duplicate key errors)
 			var params = { ordered: false };
 			mongoDb.collection(tableName).insertMany(rows, params, function insertRes(err, result) {
 				if (err) {
@@ -43,7 +49,7 @@ async function sqliteMongo(sqlitepath, mongoURI, mongoDbName = 'sqlite3') {
 
 	async function getSqliteRows(tableName) {
 		return new Promise(function (resolve, reject) {
-			let sql = `SELECT rowid as _id,* FROM ${tableName}`;
+			let sql = `SELECT rowid as _id,* FROM "${tableName}"`;
 			sqliteDb.all(sql, [], function ifErrorRejectElseResolve(err, rows) {
 				if(err) {
 					return reject(`Failed to get sqlite3 table data for ${tableName}.\n${err}`);
