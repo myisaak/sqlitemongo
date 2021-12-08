@@ -1,6 +1,5 @@
 const sqlitemongo = require('./sqlitemongo');
 const { MongoClient } = require("mongodb");
-const path = require('path');
 const { assert } = require('console');
 const SQLITE_PATH = "./test.sqlite3";
 const GH_ACTION_MONGO_URI = "mongodb://localhost:42069";
@@ -37,7 +36,7 @@ async function testRemote() {
 async function verifyResult() {
 	const mongoConnected = await MongoClient.connect(GH_ACTION_MONGO_URI);
 	const mongoDb = mongoConnected.db("sqlite3");
-	const items = await mongoDb.collection("Test").find().toArray();
+	let items = await mongoDb.collection("Test").find().toArray();
 	assert(items.length === 1, "Count of items in Test database should be 1");
 	const item = items[0];
 	assert(item, "First item should be a value, instead is Falsy");
@@ -45,5 +44,10 @@ async function verifyResult() {
 	assert(item.Test_Str === "Hello", "Test_Str should be 'Hello'");
 	assert(item.Test_Real === -241.3252, "Test_Real should be -241.3252");
 	assert(item.Test_Num === -42522, "Test_Num should be -42522");
+
+	items = await mongoDb.collection("Empty Table").find().toArray();
+	assert(items.length === 0, "Cound of items in 'Empty Table' should be 0");
+	assert()
+
 	return mongoConnected.close();
 }
