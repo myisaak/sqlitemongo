@@ -1,6 +1,7 @@
-const sqlitemongo = require('./sqlitemongo');
-const { MongoClient } = require("mongodb");
-const { assert } = require('console');
+import sqlitemongo from "./sqlitemongo";
+import {MongoClient} from "mongodb";
+import {assert} from "console";
+
 const SQLITE_PATH = "./test.sqlite3";
 const GH_ACTION_MONGO_URI = "mongodb://localhost:42069";
 
@@ -17,9 +18,9 @@ test();
 
 async function testLocal() {
 	if (process.argv.length > 3) {
-		var sqlitePath = process.argv[2];
-		var mongoURI = process.argv[3];
-		var mongoDb = process.argv.length > 4 && process.argv[4];
+		const sqlitePath = process.argv[2];
+		const mongoURI = process.argv[3];
+		const mongoDb = process.argv.length > 4 ? process.argv[4] : undefined;
 		return sqlitemongo(sqlitePath, mongoURI, mongoDb);
 	} else {
 		console.log(`Usage: node test.js <sqlitepath> <mongo uri> [<mongo database>]`);
@@ -46,8 +47,7 @@ async function verifyResult() {
 	assert(item.Test_Num === -42522, "Test_Num should be -42522");
 
 	items = await mongoDb.collection("Empty Table").find().toArray();
-	assert(items.length === 0, "Cound of items in 'Empty Table' should be 0");
-	assert()
+	assert(items.length === 0, "Count of items in 'Empty Table' should be 0");
 
 	return mongoConnected.close();
 }
